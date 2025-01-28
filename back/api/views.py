@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated, AllowAny
 
 @api_view(['GET', 'POST'])
 def listar_professores(request):
@@ -19,11 +20,13 @@ def listar_professores(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
 
 
 class ProfessoresView(ListCreateAPIView):
     queryset = Cadastro.objects.all()
     serializer_class = CadastroSerializer
+    permission_classes = [IsAuthenticated]
 
 class ProfessoresDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Cadastro.objects.all()
