@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
+import { FaEdit, FaTrash, FaPlus, FaSearch } from 'react-icons/fa';
+import './styles.css'
 
 export default function Home() {
     const [dados, setDados] = useState([])
@@ -25,16 +27,35 @@ export default function Home() {
         };
 
         fetchData();
-    }, []); // Executa quando o token estiver definido
+    }, []);
+
+    const editar = (id) => {
+
+    }
+   
+    const apagar = (id) => {
+
+    }
+
+
+
 
     return (
-        <div>
-            <h1>HOME</h1>
-            <ul>
-                {dados.map((professor, index) => (
-                    <li key={index}>{professor.nome}</li>
+        <div className="container_home">
+            <div className="body">
+                <h1>HOME</h1>
+                {dados.map((professor) => (
+                    <div key={professor.id} className="lista">
+                        <FaEdit className="edit" onClick={()=>editar(professor.id)}/>
+                        <FaTrash className="delete" onClick={()=>apagar(professor.id)}/>
+                        <span>{professor.nome}</span>
+                    </div>
                 ))}
-            </ul>
+            </div>
+            <div className="footer">
+                <FaPlus className="adicionar" />
+                <FaSearch className="procurar" />
+            </div>
         </div>
     );
 }
