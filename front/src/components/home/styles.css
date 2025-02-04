@@ -29,3 +29,12 @@
     height: 50px;
     width: 100%;
 }
+
+.lista{
+    display: flex;
+    align-items: center;
+}
+
+.id {margin-left: 10px; min-width: 50px; }  /* Ajuste para IDs curtos */
+.ni { min-width: 100px; }
+.nome { min-width: 250px; } /* Ajuste para nomes mais longos */

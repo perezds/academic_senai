@@ -32,7 +32,7 @@ export default function Home() {
     const editar = (id) => {
 
     }
-   
+
     const apagar = (id) => {
 
     }
@@ -43,12 +43,14 @@ export default function Home() {
     return (
         <div className="container_home">
             <div className="body">
-                <h1>HOME</h1>
+                <h2>Lista de Professores</h2>
                 {dados.map((professor) => (
                     <div key={professor.id} className="lista">
-                        <FaEdit className="edit" onClick={()=>editar(professor.id)}/>
-                        <FaTrash className="delete" onClick={()=>apagar(professor.id)}/>
-                        <span>{professor.nome}</span>
+                        <FaEdit className="edit" onClick={() => editar(professor.id)} />
+                        <FaTrash className="delete" onClick={() => apagar(professor.id)} />
+                        <span className="id">{professor.id}</span>
+                        <span className="ni">{professor.ni}</span>
+                        <span className="nome">{professor.nome}</span>
                     </div>
                 ))}
             </div>
