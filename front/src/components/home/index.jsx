@@ -33,7 +33,22 @@ export default function Home() {
 
     }
 
-    const apagar = (id) => {
+    const apagar = async (id) => {
+        if(window.confirm("Tem certeza? ")){
+            try {
+                await axios.delete(`http://127.0.0.1:8000/api/id/${id}`,{
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    }
+                })
+                setDados(dados.filter(professor => professor.id !== id))
+            } 
+            
+            catch (error) {
+                console.error(error)
+            }
+        }
+
 
     }
 
