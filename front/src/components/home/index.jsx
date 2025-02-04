@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react"
 import axios from "axios"
 import { FaEdit, FaTrash, FaPlus, FaSearch } from 'react-icons/fa';
 import './styles.css'
+import ModalProfessores from "../modal";
 
 export default function Home() {
     const [dados, setDados] = useState([])
+    const [modalOpen, setModalOpen] = useState(false);
     const token = localStorage.getItem('token')
     console.log("TokenHome:", token)
 
@@ -52,7 +54,26 @@ export default function Home() {
 
     }
 
-
+    const ModalProfessores = ({ isOpen, onClose }) => {
+        if (!isOpen) return null;
+      
+        return (
+          <div className="modal-overlay">
+            <div className="modal-container">
+              <button className="close-button" onClick={onClose}>×</button>
+              <h2>Cadastro de Professor</h2>
+              <form>
+                <input type="text" placeholder="NI" />
+                <input type="text" placeholder="Nome" />
+                <input type="email" placeholder="Email" />
+                <input type="tel" placeholder="Celular" />
+                <input type="text" placeholder="Ocupação" />
+                <button type="submit">Salvar</button>
+              </form>
+            </div>
+          </div>
+        );
+      };
 
 
     return (
@@ -70,9 +91,10 @@ export default function Home() {
                 ))}
             </div>
             <div className="footer">
-                <FaPlus className="adicionar" />
+                <FaPlus className="adicionar" onClick={()=>setModalOpen(true)}/>
                 <FaSearch className="procurar" />
             </div>
+            <ModalProfessores isOpen={modalOpen} onClose={() => setModalOpen(false)} />
         </div>
     );
 }
