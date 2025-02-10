@@ -24,6 +24,7 @@
     max-width: 1000px;
     font-size: 13px;
     background-color: brown;
+    
 }
 
 .edit{
@@ -86,6 +87,7 @@
     display: flex;
     align-items: center;
     background-color: rgb(225, 225, 225);
+    font-size: 15px;
 }
 
 .id {margin-left: 10px; min-width: 50px; }  /* Ajuste para IDs curtos */
@@ -148,15 +150,15 @@
 }
 .col4{
     background-color: rgb(200, 200, 200);
-    width: 60px;
+    width: 100px;
 }
 .col5{
     background-color: rgb(235, 235, 235);
-    width: 100px;
+    width: 150px;
 }
 .col6{
     background-color: rgb(200, 200, 200);
-    width: 100px;
+    width: 180px;
 }
 .col7{
     background-color: rgb(235, 235, 235);

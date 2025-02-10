@@ -9,7 +9,9 @@ export default function Home() {
     const [dados, setDados] = useState([])
     const [modalOpen, setModalOpen] = useState(false);
     const token = localStorage.getItem('token')
-    console.log("TokenHome:", token)
+    const [professorSelecionado, setProfessorSelecionado] = useState(null)
+
+    // console.log("TokenHome:", token)
 
     useEffect(() => {
 
@@ -76,6 +78,29 @@ export default function Home() {
         );
     };
 
+    const criar = async(novoProfessor)=>{
+        console.log("novoProfessor: ", novoProfessor)
+        try {
+            const response = await axios.post('http://127.0.0.1:8000/api/professores',
+                {
+                    ni: novoProfessor.ni,
+                    nome: novoProfessor.nome,
+                    email: novoProfessor.email,
+                    cel: novoProfessor.cel,
+                    ocup: novoProfessor.ocup
+                },
+                {
+                    headers:{
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+            )
+            setDados([...dados, novoProfessor])
+            setModalOpen(false)
+        } catch (error) {
+            
+        }
+    }
 
     return (
         <main className="main">
@@ -114,7 +139,7 @@ export default function Home() {
                     </div>
                     <div className="footer">
                         <div className="btn1">
-                            <FaPlus className="adicionar" onClick={() => setModalOpen(true)} />
+                            <FaPlus className="adicionar" onClick={() => {setModalOpen(true), setProfessorSelecionado(null)}} />
                         </div>
                         <div className="pesquisar">
                             <input
@@ -125,7 +150,13 @@ export default function Home() {
                             <FaSearch className="procurar" />
                         </div>
                     </div>
-                    <ModalProfessores isOpen={modalOpen} onClose={() => setModalOpen(false)} />
+                    <ModalProfessores 
+                        isOpen={modalOpen} 
+                        onClose={() => setModalOpen(false)} 
+                        professorSelecionado = {professorSelecionado}
+                        setProfessorSelecionado = {setProfessorSelecionado}
+                        criar ={criar}
+                    />
 
                 </section>
             </div>
