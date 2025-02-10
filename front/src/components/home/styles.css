@@ -19,6 +19,7 @@
 
 .table{
     display: flex;
+    flex-direction: column;
     width: 75vw;
     max-width: 1000px;
     font-size: 13px;
@@ -36,13 +37,55 @@
 .footer{
     background-color: rgb(198, 197, 194);
     height: 50px;
-    width: 100%;
+    width: 75vw;
+    max-width: 1000px;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 10px;
+    margin-top: 10px;
+    box-shadow: 0 5px 15px black;
+}
+
+.btn1{
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    background-color: aliceblue;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin: 10px;
+    margin-left: 10px;
+}
+.btn2{
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    background-color: aliceblue;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin: 10px;
+    margin-left: 10px;
+}
+
+.pesquisar{
+    display: flex;
+    height: 100%;
+    justify-content: end;
+    align-items: center;
+}
+
+.pesquisar input{
+    display: flex;
+    height: 60%;
+    border-color: aliceblue;
 }
 
 .lista{
     display: flex;
     align-items: center;
-    background-color: blueviolet;
+    background-color: rgb(225, 225, 225);
 }
 
 .id {margin-left: 10px; min-width: 50px; }  /* Ajuste para IDs curtos */
@@ -86,39 +129,40 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     width: 100vw;
     height: 100vw;
 }
 
 .col1{
-    background-color: bisque;
-    width: 40px;
+    background-color: rgb(235, 235, 235);
+    width: 20px;
 }
 .col2{
-    background-color: rgb(184, 113, 27);
-    width: 40px;
+    background-color: rgb(200, 200, 200);
+    width: 20px;
 }
 .col3{
-    background-color: bisque;
+    background-color: rgb(235, 235, 235);
     width: 40px;
 }
 .col4{
-    background-color: rgb(219, 126, 13);
-    width: 40px;
+    background-color: rgb(200, 200, 200);
+    width: 60px;
 }
 .col5{
-    background-color: bisque;
-    width: 40px;
+    background-color: rgb(235, 235, 235);
+    width: 100px;
 }
 .col6{
-    background-color: rgb(205, 118, 12);
-    width: 40px;
+    background-color: rgb(200, 200, 200);
+    width: 100px;
 }
 .col7{
-    background-color: bisque;
-    width: 40px;
+    background-color: rgb(235, 235, 235);
+    width: 100px;
 }
 .col8{
-    background-color: rgb(208, 123, 20);
-    width: 40px;
+    background-color: rgb(200, 200, 200);
+    width: 20px;
 }

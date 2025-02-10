@@ -111,8 +111,17 @@ export default function Home() {
                             </div>
                         ))}
 
-                        <div className="footer">
+                    </div>
+                    <div className="footer">
+                        <div className="btn1">
                             <FaPlus className="adicionar" onClick={() => setModalOpen(true)} />
+                        </div>
+                        <div className="pesquisar">
+                            <input
+                            
+                            />
+                        </div>
+                        <div className="btn2">
                             <FaSearch className="procurar" />
                         </div>
                     </div>
