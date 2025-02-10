@@ -1,0 +1,25 @@
+.container_footer{
+    display: flex;
+    background-color: black;
+    width: 75vw;
+    height: 90px;
+    position: fixed;
+    bottom: 0;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 5px 15px black;
+    text-align: center;
+    max-width: 1000px;
+}
+
+.school-info{
+    text-align: left;
+    max-width: 400px;
+}
+
+.main{
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+}
