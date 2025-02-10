@@ -78,30 +78,48 @@ export default function Home() {
 
 
     return (
-        <div className="container_home">
-            <main>
+        <main className="main">
+            <div className="container_home">
                 <section className="section">
-                    
-                    <div className="body">
-                        <h2>Lista de Professores</h2>
+                    <div className="table">
                         {dados.map((professor) => (
                             <div key={professor.id} className="lista">
-                                <FaEdit className="edit" onClick={() => editar(professor.id)} />
-                                <FaTrash className="delete" onClick={() => apagar(professor.id)} />
-                                <span className="id">{professor.id}</span>
-                                <span className="ni">{professor.ni}</span>
-                                <span className="nome">{professor.nome}</span>
+                                <div className="col1">
+                                    <FaEdit className="edit" onClick={() => editar(professor.id)} />
+                                </div>
+                                <div className="col2">
+                                    <FaTrash className="delete" onClick={() => apagar(professor.id)} />
+                                </div>
+                                <div className="col3">
+                                    <span className="id">{professor.id}</span>
+                                </div>
+                                <div className="col4">
+                                    <span className="ni">{professor.ni}</span>
+                                </div>
+                                <div className="col5">
+                                    <span className="nome">{professor.nome}</span>
+                                </div>
+                                <div className="col6">
+                                    <span className="email">{professor.email}</span>
+                                </div>
+                                <div className="col7">
+                                    <span className="cel">{professor.cel}</span>
+                                </div>
+                                <div className="col8">
+                                    <span className="ocup">{professor.ocup}</span>
+                                </div>
                             </div>
                         ))}
-                    </div>
-                    <div className="footer">
-                        <FaPlus className="adicionar" onClick={() => setModalOpen(true)} />
-                        <FaSearch className="procurar" />
+
+                        <div className="footer">
+                            <FaPlus className="adicionar" onClick={() => setModalOpen(true)} />
+                            <FaSearch className="procurar" />
+                        </div>
                     </div>
                     <ModalProfessores isOpen={modalOpen} onClose={() => setModalOpen(false)} />
 
                 </section>
-            </main>
-        </div>
+            </div>
+        </main>
     );
 }

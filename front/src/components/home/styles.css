@@ -1,19 +1,28 @@
+.main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .container_home{
-    /* padding: 20px; */
-    background-color: rgb(221, 229, 226);
-    width: 500px;
-    height: 450px;
+    background-color: rgb(182, 225, 209);
+    width: 75vw;
+    max-width: 1000px;
+    height: 550px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-    margin-top: 20px;
+    justify-content: flex-start;
+    border-radius: 20px;
+    margin-top: 150px;
+    padding: 10px;
 }
 
-.body{
-    width: 90%;
-    height: 90%;
+.table{
+    display: flex;
+    width: 75vw;
+    max-width: 1000px;
+    font-size: 13px;
+    background-color: brown;
 }
 
 .edit{
@@ -33,6 +42,7 @@
 .lista{
     display: flex;
     align-items: center;
+    background-color: blueviolet;
 }
 
 .id {margin-left: 10px; min-width: 50px; }  /* Ajuste para IDs curtos */
@@ -70,4 +80,45 @@
     border: none;
     font-size: 18px;
     cursor: pointer;
+}
+
+.section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vw;
+}
+
+.col1{
+    background-color: bisque;
+    width: 40px;
+}
+.col2{
+    background-color: rgb(184, 113, 27);
+    width: 40px;
+}
+.col3{
+    background-color: bisque;
+    width: 40px;
+}
+.col4{
+    background-color: rgb(219, 126, 13);
+    width: 40px;
+}
+.col5{
+    background-color: bisque;
+    width: 40px;
+}
+.col6{
+    background-color: rgb(205, 118, 12);
+    width: 40px;
+}
+.col7{
+    background-color: bisque;
+    width: 40px;
+}
+.col8{
+    background-color: rgb(208, 123, 20);
+    width: 40px;
 }
