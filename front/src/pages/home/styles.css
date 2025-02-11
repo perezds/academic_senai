@@ -130,13 +130,14 @@
     cursor: pointer;
 }
 
-.section{
+.section_home{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     flex-direction: column;
     width: 100vw;
-    height: 100vw;
+    min-height: 550px;
+    
 }
 
 .col1{

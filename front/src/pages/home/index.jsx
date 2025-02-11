@@ -105,7 +105,7 @@ export default function Home() {
     return (
         <main className="main">
             <div className="container_home">
-                <section className="section">
+                <section className="section_home">
                     <div className="table">
                         {dados.map((professor) => (
                             <div key={professor.id} className="lista">
