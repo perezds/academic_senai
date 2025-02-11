@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import "./styles.css"
 import axios from 'axios'
 import { useNavigate } from "react-router-dom";
+import {FaUser} from 'react-icons/fa'
 
 export default function Login(){
   const [user, setUser] = useState('')
@@ -28,7 +29,7 @@ export default function Login(){
   return(
     <div className="container_login">
       
-      <h1>Login</h1>
+      <FaUser className="icon" />
 
       <input
         className="caixa"

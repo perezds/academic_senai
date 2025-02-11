@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react"
 import axios from "axios"
 import { FaEdit, FaTrash, FaPlus, FaSearch } from 'react-icons/fa';
 import './styles.css'
-import ModalProfessores from "../modal";
-import Head from "../head";
+import ModalProfessores from "../../components/modal";
+import Head from "../../components/head";
 
 export default function Home() {
     const [dados, setDados] = useState([])

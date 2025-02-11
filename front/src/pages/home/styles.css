@@ -2,19 +2,22 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+
 }
 .container_home{
-    background-color: rgb(182, 225, 209);
+    background-color: rgb(228, 234, 232);
     width: 75vw;
     max-width: 1000px;
-    height: 550px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     border-radius: 20px;
     margin-top: 150px;
-    padding: 10px;
+    padding: 2dvh;
 }
 
 .table{
