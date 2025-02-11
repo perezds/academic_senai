@@ -48,7 +48,7 @@ const ModalProfessores = ({
   }
 
   return(
-    <main>
+    <div className="modal-overlay">
       <div className="modal_container">
         <button className="close_button" onClick={onClose}>X</button>
         <h2>{professorSelecionado ? "Editar": "Cadastrar"}</h2>
@@ -95,7 +95,10 @@ const ModalProfessores = ({
           </div>
         </div>
       </div>
-    </main>
+    </div>
   )
 
 }
+
+
+export default ModalProfessores

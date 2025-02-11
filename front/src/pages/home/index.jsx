@@ -3,7 +3,6 @@ import axios from "axios"
 import { FaEdit, FaTrash, FaPlus, FaSearch } from 'react-icons/fa';
 import './styles.css'
 import ModalProfessores from "../../components/modal";
-import Head from "../../components/head";
 
 export default function Home() {
     const [dados, setDados] = useState([])
@@ -35,6 +34,7 @@ export default function Home() {
     }, []);
 
     const atualizar = async (professorAtualizado) => {
+        console.log("PA",professorAtualizado.nome)
         try {
             const response = await axios.put(`http://127.0.0.1:8000/api/id/${professorAtualizado.id}`,
                 {
@@ -50,7 +50,7 @@ export default function Home() {
                 }
             )
             setDados(dados.map((professor)=>professor.id === professorAtualizado.id ? professorAtualizado: professor))
-            setModalOpen(false)
+            // setModalOpen(false)
         } catch (error) {
             console.error(error)
         }
@@ -76,27 +76,7 @@ export default function Home() {
 
     }
 
-    const ModalProfessores = ({ isOpen, onClose }) => {
-        if (!isOpen) return null;
-
-        return (
-            <div className="modal-overlay">
-                <div className="modal-container">
-                    <button className="close-button" onClick={onClose}>×</button>
-                    <h2>Cadastro de Professor</h2>
-                    <form>
-                        <input type="text" placeholder="NI" />
-                        <input type="text" placeholder="Nome" />
-                        <input type="email" placeholder="Email" />
-                        <input type="tel" placeholder="Celular" />
-                        <input type="text" placeholder="Ocupação" />
-                        <button type="submit">Salvar</button>
-                    </form>
-                </div>
-            </div>
-        );
-    };
-
+    
     const criar = async(novoProfessor)=>{
         console.log("novoProfessor: ", novoProfessor)
         try {
@@ -129,10 +109,10 @@ export default function Home() {
                         {dados.map((professor) => (
                             <div key={professor.id} className="lista">
                                 <div className="col1">
-                                    <FaEdit className="edit" onClick={() => editar(professor.id)} />
+                                    <FaEdit className="edit" onClick={() => {atualizar(professor), setModalOpen(true), setProfessorSelecionado(professor)}} />
                                 </div>
                                 <div className="col2">
-                                    <FaTrash className="delete" onClick={() => apagar(professor.id)} />
+                                    <FaTrash className="delete" onClick={() => apagar(professor)} />
                                 </div>
                                 <div className="col3">
                                     <span className="id">{professor.id}</span>
@@ -175,6 +155,7 @@ export default function Home() {
                         professorSelecionado = {professorSelecionado}
                         setProfessorSelecionado = {setProfessorSelecionado}
                         criar ={criar}
+                        atualizar={atualizar}
                     />
 
                 </section>
