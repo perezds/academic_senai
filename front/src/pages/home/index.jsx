@@ -34,7 +34,26 @@ export default function Home() {
         fetchData();
     }, []);
 
-    const editar = (id) => {
+    const atualizar = async (professorAtualizado) => {
+        try {
+            const response = await axios.put(`http://127.0.0.1:8000/api/id/${professorAtualizado.id}`,
+                {
+                    ni: professorAtualizado.ni,
+                    nome: professorAtualizado.nome,
+                    email: professorAtualizado.email,
+                    cel: professorAtualizado.cel,
+                    ocup: professorAtualizado.ocup
+                },{
+                    headers:{
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+            )
+            setDados(dados.map((professor)=>professor.id === professorAtualizado.id ? professorAtualizado: professor))
+            setModalOpen(false)
+        } catch (error) {
+            console.error(error)
+        }
 
     }
 
