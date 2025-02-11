@@ -50,7 +50,7 @@ export default function Home() {
                 }
             )
             setDados(dados.map((professor)=>professor.id === professorAtualizado.id ? professorAtualizado: professor))
-            // setModalOpen(false)
+            setModalOpen(false)
         } catch (error) {
             console.error(error)
         }
@@ -109,7 +109,7 @@ export default function Home() {
                         {dados.map((professor) => (
                             <div key={professor.id} className="lista">
                                 <div className="col1">
-                                    <FaEdit className="edit" onClick={() => {atualizar(professor), setModalOpen(true), setProfessorSelecionado(professor)}} />
+                                    <FaEdit className="edit" onClick={() => {setModalOpen(true), setProfessorSelecionado(professor)}} />
                                 </div>
                                 <div className="col2">
                                     <FaTrash className="delete" onClick={() => apagar(professor)} />

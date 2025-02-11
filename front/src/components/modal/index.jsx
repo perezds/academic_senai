@@ -86,6 +86,7 @@ const ModalProfessores = ({
                 onChange={(e)=>setOcup(e.target.value)}
                 placeholder="OCUP"
               />
+              <button type="submit">{professorSelecionado ? "Atualizar" : "Salvar"}</button>
             </form>
           </div>
           <div className="caixa2">
