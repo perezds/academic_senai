@@ -6,7 +6,7 @@ const ModalProfessores = ({
   onClose,
   professorSelecionado,
   criar,
-  editar
+  atualizar
 })=>{
   if(!isOpen) return null
 
@@ -27,8 +27,75 @@ const ModalProfessores = ({
       setEmail(professorSelecionado.email || '')
       setCel(professorSelecionado.cel || '')
       setOcup(professorSelecionado.ocup || '')
+    } else{
+      setId('')
+      setNi('')
+      setNome('')
+      setCel('')
+      setEmail('')
+      setOcup('')
     }
-  }, [])
+  }, [professorSelecionado])
 
+  const handleSubmit = (e)=>{
+    e.preventDefault();
+    const novoProfessor = {ni, nome, email, cel, ocup}
+    if(professorSelecionado){
+      atualizar({...professorSelecionado, ...novoProfessor})
+    }else{
+      criar(novoProfessor)
+    }
+  }
+
+  return(
+    <main>
+      <div className="modal_container">
+        <button className="close_button" onClick={onClose}>X</button>
+        <h2>{professorSelecionado ? "Editar": "Cadastrar"}</h2>
+        <div className="body_modal">
+          <div className="caixa1">
+            <form onSubmit={handleSubmit}>
+              
+              <input
+                className="ni_modal"
+                value={ni}
+                onChange={(e)=>setNi(e.target.value)}
+                placeholder="NI"
+              />
+              <input
+                className="nome_modal"
+                value={nome}
+                onChange={(e)=>setNome(e.target.value)}
+                placeholder="NOME"
+              />
+              <input
+                className="email_modal"
+                value={email}
+                onChange={(e)=>setEmail(e.target.value)}
+                placeholder="EMAIL"
+              />
+              <input
+                className="cel_modal"
+                value={cel}
+                onChange={(e)=>setCel(e.target.value)}
+                placeholder="CELULAR"
+              />
+              <input
+                className="ocup_modal"
+                value={ocup}
+                onChange={(e)=>setOcup(e.target.value)}
+                placeholder="OCUP"
+              />
+            </form>
+          </div>
+          <div className="caixa2">
+            <div className="foto">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  )
 
 }
