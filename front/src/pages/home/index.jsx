@@ -12,7 +12,11 @@ export default function Home() {
     const token = localStorage.getItem('token')
     const [professorSelecionado, setProfessorSelecionado] = useState(null)
     const [texto, setTexto] = useState('')
-
+    // const [ni, setNi] = useState('')
+    // const [nome, setNome] = useState('')
+    // const [email, setEmail] = useState('')
+    // const [cel, setCel] = useState('')
+    // const [ocup, setOcup] = useState('')
 
     useEffect(() => {
 
@@ -44,13 +48,13 @@ export default function Home() {
                     email: professorSelecionado.email,
                     cel: professorSelecionado.cel,
                     ocup: professorSelecionado.ocup
-                },{
-                    headers:{
-                        Authorization: `Bearer ${token}`
-                    }
+                }, {
+                headers: {
+                    Authorization: `Bearer ${token}`
                 }
+            }
             )
-            setDados(dados.map((professor)=>professor.id === professorSelecionado.id ? professorSelecionado: professor))
+            setDados(dados.map((professor) => professor.id === professorSelecionado.id ? professorSelecionado : professor))
             setModalOpen(false)
         } catch (error) {
             console.error(error)
@@ -77,8 +81,8 @@ export default function Home() {
 
     }
 
-    
-    const criar = async(novoProfessor)=>{
+
+    const criar = async (novoProfessor) => {
         console.log("novoProfessor: ", novoProfessor)
         try {
             const response = await axios.post('http://127.0.0.1:8000/api/professores',
@@ -90,7 +94,7 @@ export default function Home() {
                     ocup: novoProfessor.ocup
                 },
                 {
-                    headers:{
+                    headers: {
                         Authorization: `Bearer ${token}`
                     }
                 }
@@ -98,26 +102,23 @@ export default function Home() {
             setDados([...dados, novoProfessor])
             setModalOpen(false)
         } catch (error) {
-            
+
         }
     }
 
 
-    const search = async (texto)=>{
+    const search = async (texto) => {
+        console.log("Texto: ", texto)
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/search/${texto}`,
+            const response = await axios.get(`http://127.0.0.1:8000/api/search/?search=${texto}`,
                 {
-                    ni: professorSelecionado.ni,
-                    nome: professorSelecionado.nome,
-                    email: professorSelecionado.email,
-                    cel: professorSelecionado.cel,
-                    ocup: professorSelecionado.ocup
-                },{
-                    headers:{
+                    headers: {
                         Authorization: `Bearer ${token}`
                     }
                 }
             )
+            console.log("Teste: ", response.data[0])
+            setProfessorSelecionado(response.data[0])
         } catch (error) {
             console.error(error)
         }
@@ -132,7 +133,7 @@ export default function Home() {
                         {dados.map((professor) => (
                             <div key={professor.id} className="lista">
                                 <div className="col1">
-                                    <FaEdit className="edit" onClick={() => {setModalOpen(true), setProfessorSelecionado(professor)}} />
+                                    <FaEdit className="edit" onClick={() => { setModalOpen(true), setProfessorSelecionado(professor) }} />
                                 </div>
                                 <div className="col2">
                                     <FaTrash className="delete" onClick={() => apagar(professor)} />
@@ -161,25 +162,25 @@ export default function Home() {
                     </div>
                     <div className="footer">
                         <div className="btn1">
-                            <FaPlus className="adicionar" onClick={() => {setModalOpen(true), setProfessorSelecionado(null)}} />
+                            <FaPlus className="adicionar" onClick={() => { setModalOpen(true), setProfessorSelecionado(null) }} />
                         </div>
                         <div className="pesquisar">
                             <input
                                 placeholder="Nome do professor"
                                 value={texto}
-                                onChange={(e)=>{setTexto(e.target.value)}}
+                                onChange={(e) => { setTexto(e.target.value) }}
                             />
                         </div>
                         <div className="btn2">
-                            <FaSearch className="procurar" onClick={()=>{search(texto), setModalOpen(true)}} />
+                            <FaSearch className="procurar" onClick={() => {setModalOpen(true) , search(texto)}} />
                         </div>
                     </div>
-                    <ModalProfessores 
-                        isOpen={modalOpen} 
-                        onClose={() => setModalOpen(false)} 
-                        professorSelecionado = {professorSelecionado}
-                        setProfessorSelecionado = {setProfessorSelecionado}
-                        criar ={criar}
+                    <ModalProfessores
+                        isOpen={modalOpen}
+                        onClose={() => setModalOpen(false)}
+                        professorSelecionado={professorSelecionado}
+                        setProfessorSelecionado={setProfessorSelecionado}
+                        criar={criar}
                         atualizar={atualizar}
                     />
 

@@ -10,17 +10,17 @@ const ModalProfessores = ({
 })=>{
   if(!isOpen) return null
 
-  console.log("Prof. Selecionado: ", professorSelecionado)
-
+  
   const [id, setId] = useState(professorSelecionado?.id || '')
   const [ni, setNi] = useState(professorSelecionado?.ni || '')
   const [nome, setNome] = useState(professorSelecionado?.nome || '')
   const [email, setEmail] = useState(professorSelecionado?.email || '')
   const [cel, setCel] = useState(professorSelecionado?.cel || '')
   const [ocup, setOcup] = useState(professorSelecionado?.ocup || '')
-
+  
   useEffect(()=>{
-    if(professorSelecionado){
+    console.log("Prof. Selecionado2: ", professorSelecionado)
+    if(professorSelecionado.id){
       setId(professorSelecionado.id || '')
       setNi(professorSelecionado.ni || '')
       setNome(professorSelecionado.nome || '')
@@ -35,7 +35,7 @@ const ModalProfessores = ({
       setEmail('')
       setOcup('')
     }
-  }, [professorSelecionado])
+  }, [])
 
   const handleSubmit = (e)=>{
     e.preventDefault();
