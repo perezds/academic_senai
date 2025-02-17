@@ -55,4 +55,4 @@ class ProfessoresSearchView(ListAPIView):
     serializer_class = CadastroSerializer
     permission_classes = [IsAuthenticated]
     filter_backends = [DjangoFilterBackend, SearchFilter]
-    
+    search_fields = ['nome']

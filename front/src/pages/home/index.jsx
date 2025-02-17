@@ -102,6 +102,27 @@ export default function Home() {
         }
     }
 
+
+    const search = async (texto)=>{
+        try {
+            const response = await axios.get(`http://127.0.0.1:8000/search/${texto}`,
+                {
+                    ni: professorSelecionado.ni,
+                    nome: professorSelecionado.nome,
+                    email: professorSelecionado.email,
+                    cel: professorSelecionado.cel,
+                    ocup: professorSelecionado.ocup
+                },{
+                    headers:{
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+            )
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
     return (
         <main className="main">
             <Head />
@@ -150,7 +171,7 @@ export default function Home() {
                             />
                         </div>
                         <div className="btn2">
-                            <FaSearch className="procurar" />
+                            <FaSearch className="procurar" onClick={()=>{search(texto), setModalOpen(true)}} />
                         </div>
                     </div>
                     <ModalProfessores 
