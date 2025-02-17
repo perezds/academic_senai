@@ -11,8 +11,8 @@ export default function Home() {
     const [modalOpen, setModalOpen] = useState(false);
     const token = localStorage.getItem('token')
     const [professorSelecionado, setProfessorSelecionado] = useState(null)
+    const [texto, setTexto] = useState('')
 
-    // console.log("TokenHome:", token)
 
     useEffect(() => {
 
@@ -35,23 +35,22 @@ export default function Home() {
         fetchData();
     }, []);
 
-    const atualizar = async (professorAtualizado) => {
-        console.log("PA",professorAtualizado.nome)
+    const atualizar = async (professorSelecionado) => {
         try {
-            const response = await axios.put(`http://127.0.0.1:8000/api/id/${professorAtualizado.id}`,
+            const response = await axios.put(`http://127.0.0.1:8000/api/id/${professorSelecionado.id}`,
                 {
-                    ni: professorAtualizado.ni,
-                    nome: professorAtualizado.nome,
-                    email: professorAtualizado.email,
-                    cel: professorAtualizado.cel,
-                    ocup: professorAtualizado.ocup
+                    ni: professorSelecionado.ni,
+                    nome: professorSelecionado.nome,
+                    email: professorSelecionado.email,
+                    cel: professorSelecionado.cel,
+                    ocup: professorSelecionado.ocup
                 },{
                     headers:{
                         Authorization: `Bearer ${token}`
                     }
                 }
             )
-            setDados(dados.map((professor)=>professor.id === professorAtualizado.id ? professorAtualizado: professor))
+            setDados(dados.map((professor)=>professor.id === professorSelecionado.id ? professorSelecionado: professor))
             setModalOpen(false)
         } catch (error) {
             console.error(error)
@@ -145,7 +144,9 @@ export default function Home() {
                         </div>
                         <div className="pesquisar">
                             <input
-                            
+                                placeholder="Nome do professor"
+                                value={texto}
+                                onChange={(e)=>{setTexto(e.target.value)}}
                             />
                         </div>
                         <div className="btn2">
