@@ -3,6 +3,8 @@ import axios from "axios"
 import { FaEdit, FaTrash, FaPlus, FaSearch } from 'react-icons/fa';
 import './styles.css'
 import ModalProfessores from "../../components/modal";
+import Head from '../../components/head/index.jsx'
+import Footer from '../../components/footer/index'
 
 export default function Home() {
     const [dados, setDados] = useState([])
@@ -103,6 +105,7 @@ export default function Home() {
 
     return (
         <main className="main">
+            <Head />
             <div className="container_home">
                 <section className="section_home">
                     <div className="table">
@@ -160,6 +163,7 @@ export default function Home() {
 
                 </section>
             </div>
+            <Footer />
         </main>
     );
 }
