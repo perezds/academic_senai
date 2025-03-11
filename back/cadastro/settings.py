@@ -20,9 +20,8 @@ INSTALLED_APPS = [
     'api',
     'rest_framework_simplejwt',
     "corsheaders",
-    'django_filters'
+    'django_filters',
 ]
-
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',

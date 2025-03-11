@@ -7,55 +7,53 @@ const ModalProfessores = ({
   professorSelecionado,
   criar,
   atualizar
-})=>{
-  if(!isOpen) return null
+}) => {
+  if(!isOpen) return null;
 
-  
-  const [id, setId] = useState(professorSelecionado?.id || '')
-  const [ni, setNi] = useState(professorSelecionado?.ni || '')
-  const [nome, setNome] = useState(professorSelecionado?.nome || '')
-  const [email, setEmail] = useState(professorSelecionado?.email || '')
-  const [cel, setCel] = useState(professorSelecionado?.cel || '')
-  const [ocup, setOcup] = useState(professorSelecionado?.ocup || '')
-  
-  useEffect(()=>{
-    console.log("Prof. Selecionado2: ", professorSelecionado)
-    if(professorSelecionado.id){
-      setId(professorSelecionado.id || '')
-      setNi(professorSelecionado.ni || '')
-      setNome(professorSelecionado.nome || '')
-      setEmail(professorSelecionado.email || '')
-      setCel(professorSelecionado.cel || '')
-      setOcup(professorSelecionado.ocup || '')
-    } else{
-      setId('')
-      setNi('')
-      setNome('')
-      setCel('')
-      setEmail('')
-      setOcup('')
-    }
-  }, [])
+  const [id, setId] = useState(professorSelecionado?.id || '');
+  const [ni, setNi] = useState(professorSelecionado?.ni || '');
+  const [nome, setNome] = useState(professorSelecionado?.nome || '');
+  const [email, setEmail] = useState(professorSelecionado?.email || '');
+  const [cel, setCel] = useState(professorSelecionado?.cel || '');
+  const [ocup, setOcup] = useState(professorSelecionado?.ocup || '');
 
-  const handleSubmit = (e)=>{
-    e.preventDefault();
-    const novoProfessor = {ni, nome, email, cel, ocup}
+  useEffect(() => {
+    console.log("Prof. Selecionado: ", professorSelecionado);
     if(professorSelecionado){
-      atualizar({...professorSelecionado, ...novoProfessor})
-    }else{
-      criar(novoProfessor)
+      setId(professorSelecionado.id || '');
+      setNi(professorSelecionado.ni || '');
+      setNome(professorSelecionado.nome || '');
+      setEmail(professorSelecionado.email || '');
+      setCel(professorSelecionado.cel || '');
+      setOcup(professorSelecionado.ocup || '');
+    } else {
+      setId('');
+      setNi('');
+      setNome('');
+      setCel('');
+      setEmail('');
+      setOcup('');
+    }
+  }, [professorSelecionado]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const novoProfessor = {ni, nome, email, cel, ocup};
+    if(professorSelecionado){
+      atualizar({...professorSelecionado, ...novoProfessor});
+    } else {
+      criar(novoProfessor);
     }
   }
 
-  return(
+  return (
     <div className="modal-overlay">
       <div className="modal_container">
         <button className="close_button" onClick={onClose}>X</button>
-        <h2>{professorSelecionado ? "Editar": "Cadastrar"}</h2>
+        <h2>{professorSelecionado ? "Editar" : "Cadastrar"}</h2>
         <div className="body_modal">
           <div className="caixa1">
             <form onSubmit={handleSubmit}>
-              
               <input
                 className="ni_modal"
                 value={ni}
@@ -98,8 +96,6 @@ const ModalProfessores = ({
       </div>
     </div>
   )
-
 }
 
-
-export default ModalProfessores
+export default ModalProfessores;

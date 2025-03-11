@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, ListAPIView
 from rest_framework import status
-from rest_framework.permissions import IsAuthenticated, AllowAny  
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.filters import SearchFilter
 from django_filters.rest_framework import DjangoFilterBackend
 
@@ -29,9 +29,10 @@ def listar_professores(request):
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
 def buscar_nome_professor(request):
-    termo = request.query_params.get('nome', '')  
+    termo = request.query_params.get('nome', '') 
     if termo:
         professores = Cadastro.objects.filter(nome__icontains=termo)  
+    else:
         professores = Cadastro.objects.all()
     
     serializer = CadastroSerializer(professores, many=True)

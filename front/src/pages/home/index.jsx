@@ -108,7 +108,6 @@ export default function Home() {
 
 
     const search = async (texto) => {
-        console.log("Texto: ", texto)
         try {
             const response = await axios.get(`http://127.0.0.1:8000/api/search/?search=${texto}`,
                 {

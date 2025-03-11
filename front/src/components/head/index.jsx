@@ -1,5 +1,5 @@
 import React from "react";
-import './styles.css'
+import './styles.css';
 import { Link } from "react-router-dom";
 
 export default function Head() {
@@ -10,10 +10,10 @@ export default function Head() {
                     <h2>Professores</h2>
                 </div>
                 <div className="nav">
-                    
                     <span>Read</span>
                     <span>Update</span>
                     <span>Delete</span>
+                    <Link to="../disciplinas"><span>Disciplinas</span></Link>
                 </div>
             </div>
         </main>
