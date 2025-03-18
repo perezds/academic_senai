@@ -1,29 +1,60 @@
-import React from "react";
+import React, { useState } from 'react';
+import ModalDisciplina from "./components/modal/modaldisciplina";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Login from "./pages/login";
+import Login from "./pages/login"
 import Home from "./pages/home";
 import Env from "./pages/environments";
-import Disciplinas from "./pages/disciplina/disciplina";
-import CadastroDisciplina from './pages/CadastroDisciplina';
-import EditarDisciplina from './pages/EditarDisciplina';
+import ModalDisciplina from './components/modal/modaldisciplina'
 import './index.css'; 
 
+const Home = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [disciplinaSelecionada, setDisciplinaSelecionada] = useState(null);
 
-const App = () => {
+
+  const abrirModalParaCriar = () => {
+    setModalOpen(true);
+    setDisciplinaSelecionada(null); 
+  };
+
+
+  const abrirModalParaEditar = (disciplina) => {
+    setModalOpen(true);
+    setDisciplinaSelecionada(disciplina); 
+  };
+
+
+  const fecharModal = () => {
+    setModalOpen(false);
+  };
+
+  const criarDisciplina = (novaDisciplina) => {
+    console.log('Criando Disciplina:', novaDisciplina);
+    fecharModal(); 
+  };
+
+  const atualizarDisciplina = (disciplinaAtualizada) => {
+    console.log('Atualizando Disciplina:', disciplinaAtualizada);
+    fecharModal(); 
+
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/environments" element={<Env />}/>
-        <Route path="/disciplinas" element={<Disciplinas />}/>
-        <Route path="/disciplinas/cadastrar" component={CadastroDisciplina} />
-        <Route path="/disciplinas/editar/:id" component={EditarDisciplina} />
-        
-      </Routes>
-    </Router>
-  );
-}
+    <div>
+      <button onClick={abrirModalParaCriar}>Criar Disciplina</button>
+      <button onClick={() => abrirModalParaEditar({ id: 1, disciplina: 'Matemática', sigla: 'MAT', curso: 'Engenharia', semestre: '1', carga_horaria: 60 })}>
+        Editar Disciplina
+      </button>
 
-export default App;
+      <ModalDisciplina
+        isOpen={modalOpen}
+        onClose={fecharModal}
+        disciplinaSelecionada={disciplinaSelecionada}
+        criar={criarDisciplina}
+        atualizar={atualizarDisciplina}
+      />
+    </div>
+  );
+};
+}
+export default Home;
+
+
