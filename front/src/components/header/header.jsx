@@ -1,5 +1,7 @@
 import React from 'react';
+
 import './header.css'; 
+
 
 
 const Header = () => {
@@ -10,6 +12,9 @@ const Header = () => {
         <a href="/">Home</a>
         <a href="/home">Professores</a>
         <a href="/disciplinas">Disciplinas</a>
+        <a href="/turmas">Turmas</a>
+        <a href="/"></a>
+        
       </nav>
     </header>
     </div>

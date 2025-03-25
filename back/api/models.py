@@ -14,5 +14,14 @@ class Disciplina(models.Model):
     semestre = models.CharField(max_length=1)
     carga_horaria = models.FloatField()
 
+class Turma(models.Model):
+    codigo = models.CharField(max_length=10)
+    turma = models.CharField(max_length=10)
+
+    
+class Turma(models.Model):
+    codigo = models.CharField(max_length=10)
+    curso = models.CharField(max_length=10)
+
     def __str__(self):
         return self.nome

@@ -4,7 +4,7 @@ import Login from "./pages/login/login.jsx";
 import Home from "./pages/home/home.jsx";
 import Env from "./pages/environments";
 import Disciplinas from "./pages/disciplina/index.jsx";
-
+import Turmas from "./pages/turma/turma.jsx"
 
 const App = () => {
   return (
@@ -15,6 +15,7 @@ const App = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/environments" element={<Env />}/>
         <Route path="/disciplinas" element={<Disciplinas />}/>
+        <Route path="/turmas" element={<Turmas />}/>
       </Routes>
     </Router>
   )

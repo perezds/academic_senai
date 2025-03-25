@@ -1,0 +1,75 @@
+/* Container de Cursos */
+.disciplinas-container {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Botões */
+button {
+    margin: 10px;
+    padding: 12px 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Botão principal */
+.btn {
+    background-color: #ff7043; /* Laranja mais forte */
+    color: white;
+}
+
+/* Efeito ao passar o mouse no botão */
+.btn:hover {
+    background-color: #ff5722; /* Laranja escuro */
+    transform: translateY(-4px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Lista de Cursos */
+.disciplinas-list {
+    margin-top: 40px;
+    padding: 0;
+    list-style: none;
+}
+
+/* Item de Curso */
+.disciplina-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffe0b3; /* Laranja claro */
+    margin: 15px auto;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    max-width: 700px;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Efeito de hover nos items de cursos */
+.disciplina-item:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Ícones de Editar e Excluir */
+.edit, .delete {
+    margin: 0 10px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+/* Efeito de hover no ícone de editar */
+.edit:hover {
+    color: #ffb74d; /* Laranja suave */
+}
+
+/* Efeito de hover no ícone de excluir */
+.delete:hover {
+    color: #a71d2a; /* Vermelho forte */
+}

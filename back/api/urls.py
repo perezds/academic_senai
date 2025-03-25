@@ -1,8 +1,5 @@
 from django.urls import path
-from .views import listar_professores, ProfessoresView, ProfessoresDetailView, buscar_nome_professor, ProfessoresSearchView
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from .views import DisciplinasSearchView, DisciplinasView, DisciplinasDetailView
+from .views import *
 
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
@@ -19,5 +16,7 @@ urlpatterns = [
     path('search/', ProfessoresSearchView.as_view()),
     path('disciplinas', DisciplinasView.as_view()),
     path('disciplina', DisciplinasDetailView.as_view()),
-    path('disciplina/<int:pk>', DisciplinasSearchView.as_view())
+    path('disciplina/<int:pk>', DisciplinasSearchView.as_view()),
+    path('turmas', TurmasDetailView.as_view()),
+    path('turmas/<int:pk>', TurmasSearchView.as_view()),
 ]

@@ -58,9 +58,11 @@ export default function Disciplinas() {
   };
 
   const apagar = async (id) => {
+    console.log("IDDDD: ", id);
+    
     if (window.confirm("Tem certeza que deseja apagar?")) {
       try {
-        await axios.delete(`http://127.0.0.1:8000/api/disciplinas/${id}`, {
+        await axios.delete(`http://127.0.0.1:8000/api/id/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setDados(dados.filter((disciplina) => disciplina.id !== id));
