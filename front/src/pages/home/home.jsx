@@ -1,25 +1,20 @@
-import React, { useState, useEffect } from "react"
-import axios from "axios"
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { FaEdit, FaTrash, FaPlus, FaSearch } from 'react-icons/fa';
-import './styles.css'
-import ModalProfessores from "../../components/modal";
-import Head from '../../components/head/index.jsx'
-import Footer from '../../components/footer/index'
+import './home.css';
+import ModalProfessores from "../../components/modal/modal.jsx";
+import Head from '../../components/header/header.jsx'; // Importando o Header
+import Footer from '../../components/footer/footer.jsx'; // Importando o Footer
 
 export default function Home() {
-    const [dados, setDados] = useState([])
+    const [dados, setDados] = useState([]);
     const [modalOpen, setModalOpen] = useState(false);
-    const token = localStorage.getItem('token')
-    const [professorSelecionado, setProfessorSelecionado] = useState(null)
-    const [texto, setTexto] = useState('')
-    // const [ni, setNi] = useState('')
-    // const [nome, setNome] = useState('')
-    // const [email, setEmail] = useState('')
-    // const [cel, setCel] = useState('')
-    // const [ocup, setOcup] = useState('')
+    const token = localStorage.getItem('token');
+    const [professorSelecionado, setProfessorSelecionado] = useState(null);
+    const [texto, setTexto] = useState('');
+    const [up, setUp] = useState(false);
 
     useEffect(() => {
-
         if (!token) return;
 
         const fetchData = async () => {
@@ -37,7 +32,7 @@ export default function Home() {
         };
 
         fetchData();
-    }, []);
+    }, [up]);
 
     const atualizar = async (professorSelecionado) => {
         try {
@@ -49,18 +44,17 @@ export default function Home() {
                     cel: professorSelecionado.cel,
                     ocup: professorSelecionado.ocup
                 }, {
-                headers: {
-                    Authorization: `Bearer ${token}`
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
                 }
-            }
-            )
-            setDados(dados.map((professor) => professor.id === professorSelecionado.id ? professorSelecionado : professor))
-            setModalOpen(false)
+            );
+            setDados(dados.map((professor) => professor.id === professorSelecionado.id ? professorSelecionado : professor));
+            setModalOpen(false);
         } catch (error) {
-            console.error(error)
+            console.error(error);
         }
-
-    }
+    };
 
     const apagar = async (id) => {
         if (window.confirm("Tem certeza? ")) {
@@ -69,21 +63,16 @@ export default function Home() {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     }
-                })
-                setDados(dados.filter(professor => professor.id !== id))
-            }
-
-            catch (error) {
-                console.error(error)
+                });
+                setDados(dados.filter(professor => professor.id !== id));
+            } catch (error) {
+                console.error(error);
             }
         }
-
-
-    }
-
+    };
 
     const criar = async (novoProfessor) => {
-        console.log("novoProfessor: ", novoProfessor)
+        console.log("novoProfessor: ", novoProfessor);
         try {
             const response = await axios.post('http://127.0.0.1:8000/api/professores',
                 {
@@ -98,14 +87,13 @@ export default function Home() {
                         Authorization: `Bearer ${token}`
                     }
                 }
-            )
-            setDados([...dados, novoProfessor])
-            setModalOpen(false)
+            );
+            setDados([...dados, novoProfessor]);
+            setModalOpen(false);
         } catch (error) {
-
+            console.error("Erro ao criar professor:", error);
         }
-    }
-
+    };
 
     const search = async (texto) => {
         try {
@@ -114,18 +102,18 @@ export default function Home() {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
-                }
-            )
-            console.log("Teste: ", response.data[0])
-            setProfessorSelecionado(response.data[0])
+                });
+            setProfessorSelecionado(response.data[0]);
         } catch (error) {
-            console.error(error)
+            console.error(error);
         }
-    }
+    };
 
     return (
         <main className="main">
-            <Head />
+            {/* Incluindo o Header aqui */}
+            <Head /> 
+
             <div className="container_home">
                 <section className="section_home">
                     <div className="table">
@@ -157,8 +145,8 @@ export default function Home() {
                                 </div>
                             </div>
                         ))}
-
                     </div>
+
                     <div className="footer">
                         <div className="btn1">
                             <FaPlus className="adicionar" onClick={() => { setModalOpen(true), setProfessorSelecionado(null) }} />
@@ -171,20 +159,22 @@ export default function Home() {
                             />
                         </div>
                         <div className="btn2">
-                            <FaSearch className="procurar" onClick={() => {setModalOpen(true) , search(texto)}} />
+                            <FaSearch className="procurar" onClick={() => { setModalOpen(true), search(texto) }} />
                         </div>
                     </div>
+
                     <ModalProfessores
                         isOpen={modalOpen}
                         onClose={() => setModalOpen(false)}
                         professorSelecionado={professorSelecionado}
-                        setProfessorSelecionado={setProfessorSelecionado}
-                        criar={criar}
-                        atualizar={atualizar}
+                        up={up}
+                        setUp={setUp}
                     />
 
                 </section>
             </div>
+
+            {/* Incluindo o Footer aqui */}
             <Footer />
         </main>
     );

@@ -1,12 +1,9 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Login from "./pages/login";
-import Home from "./pages/home";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import Login from "./pages/login/login.jsx";
+import Home from "./pages/home/home.jsx";
 import Env from "./pages/environments";
-import Disciplinas from "./pages/disciplina/disciplina";
-import CadastroDisciplina from './pages/CadastroDisciplina';
-import EditarDisciplina from './pages/EditarDisciplina';
-import './index.css'; 
+import Disciplinas from "./pages/disciplina/index.jsx";
 
 
 const App = () => {
@@ -18,12 +15,9 @@ const App = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/environments" element={<Env />}/>
         <Route path="/disciplinas" element={<Disciplinas />}/>
-        <Route path="/disciplinas/cadastrar" component={CadastroDisciplina} />
-        <Route path="/disciplinas/editar/:id" component={EditarDisciplina} />
-        
       </Routes>
     </Router>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -1,0 +1,55 @@
+header{
+    background-color: blanchedalmond;
+}
+
+.container_head {
+    display: flex;
+    background-color: #ffffff; /* Laranja forte */
+    color: rgb(255, 255, 255);
+    width: 100vw;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    padding: 15px 40px;
+    border-radius: 5px;
+    font-family: 'Arial', sans-serif;
+    z-index: 1000;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: auto;
+}
+
+.nav a {
+    color: rgb(255, 102, 0);
+    font-size: 18px;
+    text-decoration: none;
+    padding: 10px 20px; /* Área de clique simples */
+    border-radius: 5px;
+}
+
+/* Simples hover */
+.nav a:hover {
+    background-color: #ff5722; /* Laranja mais escuro no hover */
+    color: #ffffff;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+}

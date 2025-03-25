@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     "corsheaders",
     'django_filters',
+    'cadastro',
 ]
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (

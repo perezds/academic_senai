@@ -1,13 +1,17 @@
 from django.shortcuts import render
-from .models import Cadastro
+from .models import Cadastro, Disciplina
 from .serializer import CadastroSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, ListAPIView
-from rest_framework import status
+from rest_framework import status,viewsets
 from rest_framework.permissions import IsAuthenticated, AllowAny  
 from rest_framework.filters import SearchFilter
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import viewsets
+from .models import Disciplina
+from .serializer import DisciplinaSerializer
+
 
 
 @api_view(['GET', 'POST'])
@@ -56,3 +60,21 @@ class ProfessoresSearchView(ListAPIView):
     permission_classes = [IsAuthenticated]
     filter_backends = [DjangoFilterBackend, SearchFilter]
     search_fields = ['nome']
+
+class DisciplinasView(ListCreateAPIView):
+    queryset = Disciplina.objects.all()
+    serializer_class = DisciplinaSerializer
+    permission_classes = [IsAuthenticated]
+
+
+class DisciplinasDetailView(ListAPIView):
+    queryset = Disciplina.objects.all()
+    serializer_class = DisciplinaSerializer
+    permission_classes = [IsAuthenticated]
+
+
+class DisciplinasSearchView(RetrieveUpdateDestroyAPIView):
+    queryset = Disciplina.objects.all()
+    serializer_class = DisciplinaSerializer
+    permission_classes = [IsAuthenticated]
+
