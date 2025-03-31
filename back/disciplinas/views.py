@@ -10,6 +10,8 @@ from rest_framework.filters import SearchFilter
 from django_filters.rest_framework import DjangoFilterBackend
 
 
+
+
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
 def listar_professores(request):
@@ -57,3 +59,4 @@ class ProfessoresSearchView(ListAPIView):
     permission_classes = [IsAuthenticated]
     filter_backends = [DjangoFilterBackend, SearchFilter]
     search_fields = ['nome']
+

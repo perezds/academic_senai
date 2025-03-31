@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import Cadastro, Disciplina, Turma
-from .serializer import CadastroSerializer, TurmasSerializer
+from .models import Cadastro, Disciplina, Turma, Curso, Ambiente
+from .serializer import CadastroSerializer, TurmasSerializer, CursoSerializer, AmbienteSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, ListAPIView
@@ -11,6 +11,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
 from .models import Disciplina
 from .serializer import DisciplinaSerializer
+
 
 
 
@@ -89,13 +90,36 @@ class TurmasSearchView(RetrieveUpdateDestroyAPIView):
     serializer_class = TurmasSerializer
     permission_classes = [IsAuthenticated]
 
+class CursosView(ListCreateAPIView):
+    queryset = Curso.objects.all()
+    serializer_class = CursoSerializer
+    permission_classes = [IsAuthenticated]
+
+
 class CursosDetailView(ListCreateAPIView):
     queryset = Curso.objects.all()
-    serializer_class = CursosSerializer
+    serializer_class = CursoSerializer
     permission_classes = [IsAuthenticated]
 
 
 class CursosSearchView(RetrieveUpdateDestroyAPIView):
     queryset = Curso.objects.all()
-    serializer_class = CursosSerializer
+    serializer_class = CursoSerializer
+    permission_classes = [IsAuthenticated]
+
+class AmbienteView(ListCreateAPIView):
+    queryset = Ambiente.objects.all()
+    serializer_class = AmbienteSerializer
+    permission_classes = [IsAuthenticated]
+
+
+class AmbienteDetailView(ListCreateAPIView):
+    queryset = Curso.objects.all()
+    serializer_class = AmbienteSerializer
+    permission_classes = [IsAuthenticated]
+
+
+class AmbienteSearchView(RetrieveUpdateDestroyAPIView):
+    queryset = Ambiente.objects.all()
+    serializer_class = CursoSerializer
     permission_classes = [IsAuthenticated]
