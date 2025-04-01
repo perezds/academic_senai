@@ -37,7 +37,19 @@ class Ambiente(models.Model):
     Inicio = models.DateField(max_length=10)
     Periodo = models.TimeField(max_length=10)
     
+class OrdemServico(models.Model):
+    id = models.AutoField
+    descricao =  models.CharField(max_length=255)
+    abertura = models.DateTimeField
+    fechamento = models.DateTimeField
+    status = models.CharField(max_length=100)
+    patrimonio = models.CharField(max_length=100)
+    ambiente = models.CharField(max_length=100)
+    manutentor = models.CharField(max_length=100)
+    responsavel = models.CharField(max_length=100)
+    prioridade = models.CharField(max_length=100)
 
+    
     def __str__(self):
         return self.nome
     

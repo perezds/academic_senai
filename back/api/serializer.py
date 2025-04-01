@@ -4,6 +4,8 @@ from .models import Disciplina
 from .models import Turma
 from .models import Curso
 from .models import Ambiente
+from .models import OrdemServico
+
 
 class CadastroSerializer(serializers.ModelSerializer):
     class Meta:
@@ -28,4 +30,9 @@ class CursoSerializer(serializers.ModelSerializer):
 class AmbienteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ambiente
+        fields = '__all__'
+
+class OrdemServicoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ordemServico
         fields = '__all__'

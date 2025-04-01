@@ -19,4 +19,8 @@ urlpatterns = [
     path('disciplina/<int:pk>', DisciplinasSearchView.as_view()),
     path('turmas', TurmasDetailView.as_view()),
     path('turmas/<int:pk>', TurmasSearchView.as_view()),
+    path('curso', CursosDetailView.as_view()),
+    path('curso/<int:pk>', CursosSearchView.as_view()),
+    path('ambiente', AmbienteDetailView.as_view()),
+    path('ambiente/<int:pk>', AmbienteSearchView.as_view()),
 ]
